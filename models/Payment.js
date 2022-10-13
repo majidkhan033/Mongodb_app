@@ -2,27 +2,22 @@ import mongoose from "mongoose";
 
 // import {Schema} from "mongoose";
 
-let taskSchema = new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Users"
+let paymentSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Hotel"
     },
-    Payment: [
+    payments: [
         {
-            taskname: {
+            payment_medium: {
                 type: String,
                 required: true
             },
-            deadline: {
-                type: Date,
+            payment_date: {
+                type: String,
                 required: true
             },
-            reminders: {
-                type: [Date],
-                required: true,
-                // maxlength: 4
-            },
-            isCompleted: {
+            isSuccessful: {
                 type: Boolean,
                 default: false
             }
@@ -30,7 +25,7 @@ let taskSchema = new mongoose.Schema({
     ]
 })
 
-// const taskModel = new mongoose.model("Tasks", taskSchema, "usertasks")
+// const taskModel = new mongoose.model("Tasks", paymentSchema, "usertasks")
 // export default taskModel;
 
-export default mongoose.model("Tasks", taskSchema, "usertasks");
+export default mongoose.model("Payments", paymentSchema, "payments");
